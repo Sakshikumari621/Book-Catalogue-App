@@ -35,7 +35,7 @@ def signup(request):
         new_user.first_name = fname
         new_user.last_name = lname
         new_user.save()
-        messages.success(request, "Account Created Sucssefully.")
+        messages.success(request, "Account Created Successfully.")
 
         return redirect("/signin")
 
