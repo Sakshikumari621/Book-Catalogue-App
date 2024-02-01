@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #bfd6d9;
+            color: #333;
+            padding: 2px 20px;
+
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .logout {
+            margin-left: auto;
+        }
+
+        .logout-button {
+            background: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .logout-link {
+            text-decoration: none;
+            color: #333;
+        }
+
+        footer {
+            background-color: #bfd6d9;
+            color: #333;
+            padding: 10px 20px;
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .container-fluid {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            height: 100%;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .list-group-item {
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            color: #555;
+            font-weight: bold;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+        }
+
+        .list-group-item:hover {
+            background-color: #e0e0e0;
+        }
+
+        .main-content {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            height: 100%;
+        }
+
+        .main-content h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #bfd6d9;
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <header>
+            <div class="header-content">
+                {% if user.is_authenticated %}
+                <div class="welcome">
+                    <h3>Hello {{ fname }} !</h3>
+                </div>
+                <div class="logout">
+                    <button type="submit"> <a href="/signout/" class="logout-link">Sign Out</a></button>
+                </div>
+                {% endif %}
+            </div>
+        </header>
+
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="sidebar">
+                    <h2>Menu</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item"><button type="submit"><a href="/book_list/" class="logout-link">My
+                                    Book List</a></button></li>
+                        <li class="list-group-item"><button type="submit"><a href="/signout/" class="logout-link">Public
+                                    Review</a></button></li>
+                        <li class="list-group-item"><button type="submit"><a href="/add_book/" class="logout-link">Add
+                                    Book Review</a></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="main-content">
+                    <h2>Main Content</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Genre</th>
+                                <th>Year</th>
+                                <th>Image</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>21 lessons for the 21st century</td>
+                                <td>Yuval Noah Harari</td>
+                                <td>Social philosophy</td>
+                                <td>2018</td>
+                                <td><img src="/static/21_lessons.jpg" alt="Book Cover"></td>
+                            </tr>
+                            <tr>
+                                <td>IIMA - Day to Day Economics: The Ultimate Guide to Modern Indian Economy</td>
+                                <td>Satish Y. Deodhar</td>
+                                <td>Economics</td>
+                                <td>2012</td>
+                                <td><img src="/static/day_to_day_economics.jpeg" alt="Book Cover"></td>
+                            </tr>
+                            <tr>
+                                <td>The God of Small Things</td>
+                                <td>Arundhati Roy</td>
+                                <td>Fiction</td>
+                                <td>1997</td>
+                                <td><img src="/static/the_god_of_small_things.jpg" alt="Book Cover"></td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Book Catalogue App. Sakshi</p>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
