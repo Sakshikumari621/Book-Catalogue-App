@@ -12,6 +12,7 @@ class Book(models.Model):
     rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
     comment = models.TextField()
     public = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now=True, null=True)
 
     @property
     def rating_color(self):

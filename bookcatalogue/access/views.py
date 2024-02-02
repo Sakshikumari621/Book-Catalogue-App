@@ -73,7 +73,7 @@ def signout(request):
 @login_required
 def book_list(request):
     if request.method == "GET":
-        book_list = Book.objects.filter(user=request.user)
+        book_list = Book.objects.filter(user=request.user).order_by("-created_at")
 
     return render(request, "book_list.html", {"books": book_list})
 
@@ -83,7 +83,7 @@ def add_book(request):
     if request.method == "POST":
         book_name = request.POST.get("book_name")
         author = request.POST.get("author_name")
-        year = request.Post.get("release_year")
+        year = request.POST.get("release_year")
         description = request.POST.get("description")
         rating = int(request.POST.get("rating"))
         comment = request.POST.get("comment")
@@ -97,6 +97,7 @@ def add_book(request):
             rating=rating,
             comment=comment,
             public=public,
+            user_id=request.user.id,
         )
         return redirect("/book_list")
     return render(request, "add_book.html")

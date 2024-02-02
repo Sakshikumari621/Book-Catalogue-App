@@ -20,7 +20,7 @@
         header {
             background-color: #bfd6d9;
             color: #333;
-            padding: 2px 20px;
+            padding: 2px 4px;
 
         }
 
@@ -141,7 +141,7 @@
             <div class="header-content">
                 {% if user.is_authenticated %}
                 <div class="welcome">
-                    <h3>Hello {{ fname }} !</h3>
+                    <h4>Hello {{ fname }} !</h4>
                 </div>
                 <div class="logout">
                     <button type="submit"> <a href="/signout/" class="logout-link">Sign Out</a></button>
@@ -162,7 +162,7 @@
                         <li class="list-group-item"><button type="submit"><a href="/signout/" class="logout-link">Public
                                     Review</a></button></li>
                         <li class="list-group-item"><button type="submit"><a href="/add_book/" class="logout-link">Add
-                                    Book Review</a></button>
+                                    Book</a></button>
                         </li>
                     </ul>
                 </div>
