@@ -82,19 +82,16 @@
 
 <body>
     <header>
-        <header>
-            <div class="header-content">
-                {% if user.is_authenticated %}
-                <div class="welcome">
-                    <h4>Curate Your Favorite Book Collection...</h4>
-                </div>
-                <div class="logout">
-                    <button type="submit"> <a href="/signout/" class="logout-link">Sign Out</a></button>
-                </div>
-                {% endif %}
+        <div class="header-content">
+            {% if user.is_authenticated %}
+            <div class="welcome">
+                <h4>Curate Your Favorite Book Collection...</h4>
             </div>
-        </header>
-
+            <div class="logout">
+                <button type="submit"> <a href="/signout/" class="logout-link">Sign Out</a></button>
+            </div>
+            {% endif %}
+        </div>
     </header>
 
     <div class="container mt-3">
@@ -139,7 +136,7 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="comment" class="form-label">Comment</label>
+                    <label for="comment" class="form-label">Review Comment</label>
                     <textarea name="comment" class="form-control" id="comment"
                         placeholder="Write Review Comment"></textarea>
                 </div>

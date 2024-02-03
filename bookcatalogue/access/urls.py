@@ -4,6 +4,7 @@ from access.views import signup
 from access.views import signout
 from access.views import book_list
 from access.views import add_book
+from access.views import edit_book
 
 from access.views import home
 
@@ -14,4 +15,5 @@ urlpatterns = [
     path("signout/", signout, name="signout"),
     path("book_list/", book_list, name="book_list"),
     path("add_book/", add_book, name="add_book"),
+    path("edit_book/<int:id>/", edit_book, name="edit_book"),
 ]
