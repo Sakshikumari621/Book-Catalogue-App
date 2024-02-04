@@ -36,19 +36,6 @@
             margin-left: auto;
         }
 
-        .logout-button {
-            background: #f0f0f0;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            color: #333;
-        }
-
-        .logout-link {
-            text-decoration: none;
-            color: #333;
-        }
-
         footer {
             background-color: #bfd6d9;
             color: #333;
@@ -75,7 +62,7 @@
             font-size: smaller;
             color: #ffffff;
             margin-right: 8px;
-            width: 70px;
+            width: 90px;
         }
 
         #reviewContainer {
@@ -111,7 +98,8 @@
                 <h4>Your Book Collection...</h4>
             </div>
             <div class="logout">
-                <button type="submit"> <a href="/signout/" class="logout-link">Sign Out</a></button>
+                <a href="/home/" class="btn btn-primary">Dashboard</a>
+                <a href="/signout/" class="btn btn-primary">Sign Out</a>
             </div>
             {% endif %}
         </div>
@@ -139,9 +127,9 @@
                         <button class="btn btn-info" onclick="openReview(this)" data-rating="{{ book.rating }}"
                             data-comment="{{ book.comment }}" data-public="{{ book.public }}">View Review</button>
 
-                        <button class="btn btn-success">Edit</button>
+                        <a href="/edit_book/{{book.Book_id}}/" class="btn btn-success">Edit</a>
+                        <a href="/delete_book/{{book.Book_id}}/" class="btn btn-danger">Delete</a>
 
-                        <button class="btn btn-danger">Delete</button>
                     </td>
 
                 </tr>

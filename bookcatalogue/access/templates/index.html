@@ -33,18 +33,6 @@
             margin-left: auto;
         }
 
-        .logout-button {
-            background: #f0f0f0;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            color: #333;
-        }
-
-        .logout-link {
-            text-decoration: none;
-            color: #333;
-        }
 
         footer {
             background-color: #bfd6d9;
@@ -132,6 +120,13 @@
             height: auto;
             border-radius: 5px;
         }
+
+        .logout a {
+            font-size: smaller;
+            color: #ffffff;
+            margin-right: 8px;
+            width: 90px;
+        }
     </style>
 </head>
 
@@ -144,7 +139,7 @@
                     <h4>Hello {{ fname }} !</h4>
                 </div>
                 <div class="logout">
-                    <button type="submit"> <a href="/signout/" class="logout-link">Sign Out</a></button>
+                    <a href="/signout/" class="btn btn-primary">Sign Out</a>
                 </div>
                 {% endif %}
             </div>
@@ -157,12 +152,12 @@
                 <div class="sidebar">
                     <h2>Menu</h2>
                     <ul class="list-group">
-                        <li class="list-group-item"><button type="submit"><a href="/book_list/" class="logout-link">My
-                                    Book List</a></button></li>
-                        <li class="list-group-item"><button type="submit"><a href="/signout/" class="logout-link">Public
-                                    Review</a></button></li>
-                        <li class="list-group-item"><button type="submit"><a href="/add_book/" class="logout-link">Add
-                                    Book</a></button>
+                        <li class="list-group-item"><a href="/book_list/" class="btn btn-primary">My
+                                Book List</a></li>
+                        <li class="list-group-item"><a href="/signout/" class="btn btn-primary">Public
+                                Review</a></li>
+                        <li class="list-group-item"><a href="/add_book/" class="btn btn-primary">Add
+                                Book</a>
                         </li>
                     </ul>
                 </div>

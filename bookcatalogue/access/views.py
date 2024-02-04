@@ -109,7 +109,7 @@ def edit_book(request, book_id):
     if request.method == "POST":
         book.book_name = request.POST.get("book_name")
         book.author_name = request.POST.get("author_name")
-        book.year_of_release = request.Post.get("release_year")
+        book.year_of_release = request.POST.get("release_year")
         book.description = request.POST.get("description")
         book.rating = int(request.POST.get("rating"))
         book.comment = request.POST.get("comment")

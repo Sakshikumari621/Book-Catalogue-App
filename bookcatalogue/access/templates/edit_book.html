@@ -73,7 +73,7 @@
         <div class="header-content">
             {% if user.is_authenticated %}
             <div class="welcome">
-                <h4>Curate Your Favorite Book Collection...</h4>
+                <h4>Update Book...</h4>
             </div>
             <div class="logout">
                 <a href="/home/" class="btn btn-primary">Dashboard</a>
@@ -84,30 +84,28 @@
     </header>
 
     <div class="container mt-3">
-        <form class="col-8 mx-auto p-3 shadow-lg" method="post" action="{% url 'add_book' %}">
+        <form class="col-8 mx-auto p-3 shadow-lg" method="post">
             {% csrf_token %}
             <fieldset>
-                <h5>Book Details</h5>
+                <h5>Update Book</h5>
                 <hr>
                 <div class="mb-3">
-                    <label for="book_name" class="form-label">Book Name <span class="text-danger">*</span></label>
-                    <input type="text" name="book_name" class="form-control" id="book_name"
-                        placeholder="Enter Book Name" required>
+                    <label for="book_name" class="form-label">Book Name</label>
+                    <input type="text" value="{{book.book_name}}" name="book_name" class="form-control" id="book_name">
                 </div>
                 <div class="mb-3">
-                    <label for="author_name" class="form-label">Author Name <span class="text-danger">*</span></label>
-                    <input type="text" name="author_name" class="form-control" id="author_name"
-                        placeholder="Enter Author Name" required>
+                    <label for="author_name" class="form-label">Author Name </label>
+                    <input type="text" value="{{book.author_name}}" name="author_name" class="form-control"
+                        id="author_name">
                 </div>
                 <div class="mb-3">
-                    <label for="release_year" class="form-label">Release Year <span class="text-danger">*</span></label>
-                    <input type="number" name="release_year" class="form-control" id="release_year"
-                        placeholder="Enter Release Year" min="0" required>
+                    <label for="release_year" class="form-label">Release Year</label>
+                    <input type="number" value="{{book.year_of_release}}" name="release_year" class="form-control"
+                        id="release_year">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea name="description" class="form-control" id="description"
-                        placeholder="Write 2-3 lines about the Book"></textarea>
+                    <textarea name="description" class="form-control" id="description">{{book.description}}</textarea>
                 </div>
             </fieldset>
             <fieldset>
@@ -126,16 +124,17 @@
                 </div>
                 <div class="mb-3">
                     <label for="comment" class="form-label">Review Comment</label>
-                    <textarea name="comment" class="form-control" id="comment"
-                        placeholder="Write Review Comment"></textarea>
+                    <textarea name="comment" class="form-control" id="comment">{{book.comment}}</textarea>
                 </div>
             </fieldset>
             <div class="mb-3 form-check">
-                <input type="checkbox" name="public" class="form-check-input" id="public">
+                <input type="checkbox" {% if book.public %}checked{% endif %} name="public" class="form-check-input"
+                    id="public">
+
                 <label class="form-label" for="public">Public</label>
             </div>
             <div>
-                <button type="submit" class="btn btn-primary">Add Book</button>
+                <button type="submit" class="btn btn-primary">Edit</button>
             </div>
         </form>
 
