@@ -9,7 +9,7 @@ from access.models import Book
 
 @login_required
 def home(request):
-    fname = request.GET.get("fname", "")
+    fname = request.user.first_name
     # messages.success(request, "Login successful!")
     return render(request, "index.html", {"fname": fname})
 
@@ -53,8 +53,7 @@ def signin(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            fname = user.first_name
-            return redirect("/home?fname=" + fname)
+            return redirect("/home")
         else:
             print("error")
             messages.error(request, "Invalid username or password. Please try again.")
@@ -125,3 +124,15 @@ def delete_book(request, book_id):
     book = Book.objects.get(pk=book_id)
     book.delete()
     return redirect("/book_list")
+
+
+@login_required
+def get_public_review(request):
+    if request.method == "GET":
+        public_book_list = (
+            Book.objects.exclude(user_id=request.user.id)
+            .filter(public=True)
+            .order_by("-rating")
+        )
+
+    return render(request, "public_book.html", {"public_book_list": public_book_list})

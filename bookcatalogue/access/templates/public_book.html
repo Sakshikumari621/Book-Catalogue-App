@@ -95,7 +95,7 @@
         <div class="header-content">
             {% if user.is_authenticated %}
             <div class="welcome">
-                <h4>Your Book Collection...</h4>
+                <h4>Public Review...</h4>
             </div>
             <div class="logout">
                 <a href="/home/" class="btn btn-primary">Dashboard</a>
@@ -108,6 +108,7 @@
         <table class="table">
             <thead class="thead-dark">
                 <tr>
+                    <th scope="col">Reviewer</th>
                     <th scope="col">Title</th>
                     <th scope="col">Author</th>
                     <th scope="col">Year</th>
@@ -116,8 +117,9 @@
                 </tr>
             </thead>
             <tbody>
-                {% for book in books %}
+                {% for book in public_book_list %}
                 <tr>
+                    <td>{{ book.user.first_name }} {{ book.user.last_name }}</td>
                     <td>{{ book.book_name }}</td>
                     <td>{{ book.author_name }}</td>
                     <td>{{ book.year_of_release }}</td>
@@ -126,9 +128,6 @@
                     <td class="action-button">
                         <button class="btn btn-info" onclick="openReview(this)" data-rating="{{ book.rating }}"
                             data-comment="{{ book.comment }}" data-public="{{ book.public }}">View Review</button>
-
-                        <a href="/edit_book/{{book.Book_id}}/" class="btn btn-success">Edit</a>
-                        <a href="/delete_book/{{book.Book_id}}/" class="btn btn-danger">Delete</a>
 
                     </td>
 
@@ -152,15 +151,11 @@
         function openReview(button) {
             var rating = button.getAttribute("data-rating");
             var comment = button.getAttribute("data-comment");
-            var public = button.getAttribute("data-public")
-
-            var isPublic = public === "True" ? 'Public' : 'Private';
 
             document.getElementById("reviewContent").innerHTML = "<div style='position: relative;'>" +
                 "<button onclick=\"closeReview()\" class='btn btn-secondary' style='position: absolute; top: 0px; right: 0px;'>Close</button>" +
                 "<p><strong>Rating:</strong> " + rating + " out of 5</p>" +
                 "<p><strong>Comment:</strong> " + comment + "</p>" +
-                "<p><strong>" + isPublic + "</strong> " + "</p>" +
                 "</div>";
             document.getElementById("reviewContainer").style.display = "flex";
         }
